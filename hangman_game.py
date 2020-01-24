@@ -25,4 +25,4 @@ if(m==k):
     print("win")
 else:
     print("lost")
-print(l)
+
