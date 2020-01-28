@@ -3,13 +3,10 @@ import os
 import os.path
 m=[]
 d={}
-if  not(os.path.isfile('bank.txt')):
+if not(os.path.isfile('bank.txt')):             #checking file is there to save the details
     f=open("bank.txt","w")
     f.close()
-
-if(os.path.getsize("bank.txt")==0):
-    print("File is empty")
-else:
+if not(os.path.getsize("bank.txt")==0):         #reading data from the file
     f=open("bank.txt","r")
     d=eval(f.read())
     f.close()
@@ -20,7 +17,7 @@ print("""menu:
         3.exit""")
 print("\n")
 choice=int(input("enter choice:"))
-def register():
+def register():                                 #registering new bank customer
     f=open("bank.txt","w")
     l=[]
     print("******************Registeration page*******************")
@@ -55,8 +52,8 @@ def register():
         3.exit""")
     choice=int(input("enter choice:"))
     return choice
-def login():
-    print("******************login page*******************")
+def login():                                                #logining the bank account user
+    print("******************login page****************************")
     user_id=int(input("enter user id:"))
     password1=str(input("enter password:"))
     l=[]
@@ -77,7 +74,7 @@ def login():
         3.exit""")
     choice=int(input("enter choice:"))
     return choice
-def account_details(user_id):
+def account_details(user_id):                              #account details of the bank account user
     print("******************account details*******************")
     print("""choice:
         1.amount_balance
