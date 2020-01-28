@@ -1,9 +1,14 @@
 import random
 import os
+import os.path
 m=[]
 d={}
+if  not(os.path.isfile('bank.txt')):
+    f=open("bank.txt","w")
+    f.close()
+
 if(os.path.getsize("bank.txt")==0):
-    print("file is empty")
+    print("File is empty")
 else:
     f=open("bank.txt","r")
     d=eval(f.read())
@@ -40,6 +45,7 @@ def register():
     if r not in m:
         m.append(r)
         d[r]=l
+        print("user_id:%d"%(r))
     f.write(str(d))
     f.close()
     print("do you want to continue:")
@@ -51,9 +57,8 @@ def register():
     return choice
 def login():
     print("******************login page*******************")
-    print("enter user id:")
-    user_id=int(input())
-    password1=str(input())
+    user_id=int(input("enter user id:"))
+    password1=str(input("enter password:"))
     l=[]
     f=open("bank.txt","r")
     r=eval(f.read())
@@ -62,6 +67,8 @@ def login():
         r={"amount":2000,"withdraw":0,"history":[]}
         d[user_id].append(r)
         account_details(user_id)
+    else:
+        print("unsuccessful log in")
     f.close()
     print("do you want to continue:")
     print("""menu:
