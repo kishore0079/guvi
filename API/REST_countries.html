@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"meta>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <title>
+            COUNTRIES FLAGS...
+        </title>
+        <script>
+
+        var Httpreq = new XMLHttpRequest(); // a new request
+Httpreq.open("GET",'https://restcountries.eu/rest/v2/all',false);
+Httpreq.send(null);
+var m=Httpreq.responseText;
+d=JSON.parse(m);
+function myFunction() {
+  var a=[]
+  for(i=0;i<=19;i++)
+  {
+   
+      a[i]=document.createElement("img");
+      
+  }
+  for(i=0;i<=19;i++){ 
+  a[i].setAttribute("src",d[i]["flag"] );
+  a[i].setAttribute("width", "100");
+  a[i].setAttribute("height", "100");
+  a[i].setAttribute("id", i);
+  a[i].setAttribute("alt", d[i]["name"]);
+  a[i].setAttribute("title",d[i]["name"]);
+  a[i].setAttribute("onclick","getValue(id)");
+  document.getElementById(i).appendChild(a[i]);
+  }  
+}
+
+function getValue(id)
+{
+    document.write("Name: "+d[id]["name"]);
+    document.write("<br>");
+    document.write("alpha2Code: "+d[id]["alpha2Code"]);
+    document.write("<br>");
+    document.write("capital: "+d[id]["capital"]);
+    document.write("<br>");
+    document.write("area: "+d[id]["area"]);
+    document.write("<br>");
+    document.write("borders: "+d[id]["borders"]);
+          
+}
+ </script>
+
+<style>
+.boxdiv img{
+    height: 120%;
+    width: 120%;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+.col-lg-2
+{
+    margin-left: 10px;
+}
+.row
+{
+    margin-bottom: 10px;
+    background-color: coral;
+}
+
+
+</style>
+
+
+
+    </head>
+    <body onload="myFunction()">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="boxdiv" id="0">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="1">
+                    
+                 </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="2">
+                  
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="3">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="4">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="boxdiv" id="5">
+                   
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="6">
+                    
+                 </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="7">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="8">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="9">
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="boxdiv" id="10">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="11">
+                    
+                 </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="12">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="13">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="14">
+                
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="boxdiv" id="15">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="16">
+                    
+                 </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="17">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="18">
+                    
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="boxdiv" id="19">
+                    
+                </div>
+            </div>
+            
+        </div>
+    </body>
+
+
+</html>
