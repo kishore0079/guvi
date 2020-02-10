@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function invoke()
+{
+    var div=document.createElement("div");
+    div.setAttribute("class","container");
+    div.setAttribute("id","container1");
+    document.getElementById("body").appendChild(div);
+    
+    var div1 =document.createElement("div");
+    div1.setAttribute("class","row");
+    div1.setAttribute("id","row1");
+    document.getElementById("container1").appendChild(div1);
+    
+    var div2 =document.createElement("div");
+    div2.setAttribute("class","col-sm-4");
+    div2.setAttribute("id","name1");
+    document.getElementById("row1").appendChild(div2);
+    
+    var p=document.createElement("marquee");
+    p.setAttribute("id","mark");
+    var r=document.createElement("h3");
+    var t=document.createTextNode("INDIA");
+    r.appendChild(t);
+    p.appendChild(r);
+    document.getElementById("name1").appendChild(p);
+
+    var div3 =document.createElement("div");
+    div3.setAttribute("class","col-sm-4");
+    div3.setAttribute("id","name2");
+    document.getElementById("row1").appendChild(div3);
+
+    var p1=document.createElement("marquee");
+    p1.setAttribute("id","mark");
+    var r1=document.createElement("h3");
+    var t1=document.createTextNode("AUSTRALIA");
+    r1.appendChild(t1);
+    p1.appendChild(r1);
+    document.getElementById("name2").appendChild(p1);
+
+    var div4 =document.createElement("div")
+    div4.setAttribute("class","row");
+    div4.setAttribute("id","row2")
+    document.getElementById("container1").appendChild(div4);
+
+    var div5 =document.createElement("div")
+    div5.setAttribute("class","col-sm-4");
+    div5.setAttribute("id","playernames1")
+    document.getElementById("row2").appendChild(div5);
+    
+    var div6 =document.createElement("div")
+    div6.setAttribute("class","col-sm-4");
+    div6.setAttribute("id","playernames2")
+    document.getElementById("row2").appendChild(div6);
+
+    var b2=document.createElement("button");
+    b2.setAttribute("id","team1");
+    b2.setAttribute("class","b2");
+    b2.setAttribute("onclick","myFunction1(id)");
+    b2.innerText="Score";
+    document.getElementById("row2").appendChild(b2);
+
+    var b1=document.createElement("button");
+    b1.setAttribute("id","team1");
+    b1.setAttribute("class","b1");
+    b1.setAttribute("onclick","myFunction(id)");
+    b1.innerText="Players Get Ready!!";
+    document.getElementById("row2").appendChild(b1);
+
+    var b3=document.createElement("button");
+    b3.setAttribute("id","team1");
+    b3.setAttribute("class","b3");
+    b3.setAttribute("onclick","myFunction2(id)");
+    b3.innerText="Score_board";
+    document.getElementById("row2").appendChild(b3);
+
+    var players = new Array();
+    players.push(["No","_________________Player Name_________________"]);
+    players.push([1, "Virat kholi(c)"]);
+    players.push([2, "Rohit sharma"]);
+    players.push([3, "Sikhar dhawan"]);
+    players.push([4, "Manish pandiya"]);
+    players.push([5, "Shreyas iyer"]);
+    players.push([6, "MS dhoni(wk)"]);
+    players.push([7, "Rishabh Pant"]);
+    players.push([8, "Bumbra"]);
+    players.push([9, "Umesh Yadav"]);
+    players.push([10, "Bhuvaneshwar"]);
+    players.push([11,"Dinesh karthik"]);
+    var i=0
+    var table1=document.createElement("table");
+    table1.setAttribute("id","dvTable");
+    document.getElementById("playernames1").appendChild(table1);
+    GenerateTable(players,i);
+
+    var players1 = new Array();
+    players1.push(["No","_________________Player Name_________________"]);
+    players1.push([1, "David Warner(c)"]);
+    players1.push([2, "Steven smith"]);
+    players1.push([3, "Aron Finch"]);
+    players1.push([4, "M.hussey"]);
+    players1.push([5, "Patt cummins"]);
+    players1.push([6, "Albie Morkel"]);
+    players1.push([7, "Nanthan Lyon"]);
+    players1.push([8, "Adam zampa"]);
+    players1.push([9, "Mitchel Starc"]);
+    players1.push([10, "Santner"]);
+    players1.push([11,"Khawaja"]);
+
+    var k=1
+    var table2=document.createElement("table");
+    table2.setAttribute("id","dvTable1");
+    document.getElementById("playernames2").appendChild(table2);
+    GenerateTable(players1,k);
+    
+}
+function GenerateTable(players,u) 
+{
+    //Build an array containing Customer records.
+    //Create a HTML Table element.
+    var table = document.createElement("TABLE");
+    table.border = "1";
+    table.offsetWidth="50";
+    //Get the count of columns.
+    var columnCount = players[0].length;
+    //Add the header row.
+    var row = table.insertRow(-1);
+    for (var i = 0; i < columnCount; i++) {
+        var headerCell = document.createElement("TH");
+        headerCell.innerHTML = players[0][i];
+        row.appendChild(headerCell);
+    }
+    //Add the data rows.
+    for (var i = 1; i < players.length; i++)
+    {
+    row = table.insertRow(-1);
+    for (var j = 0; j < columnCount; j++)
+    {
+    var cell = row.insertCell(-1);
+            cell.innerHTML = players[i][j];
+        }
+    }
+    if(u==0)
+    {
+    var dvTable = document.getElementById("dvTable");
+    dvTable.innerHTML = "";
+    dvTable.appendChild(table);
+    }
+    else
+    {
+    var dvTable = document.getElementById("dvTable1");
+    dvTable.innerHTML = "";
+    dvTable.appendChild(table);
+    }
+}
+
+class team
+{
+    constructor()
+    {
+        this.balls=1;
+        this.players_count=0;
+        this.teamscore=0;
+    }
+Team_Players=[{},{},{},{},{},{},{},{},{},{},{}];
+assign(teamname)
+{
+    for(var i=0;i<teamname.length;i++)
+    {
+        this.Team_Players[i]["playername"]=teamname[i];
+        this.Team_Players[i]["score"]=0;
+        this.Team_Players[i]["balls"]=0;
+        this.Team_Players[i]["6's"]=0;
+        this.Team_Players[i]["4's"]=0;
+        this.Team_Players[i]["1's"]=0;
+    }
+}
+printTeam()
+{
+    for(var i=0;i<this.Team_Players.length;i++)
+    {
+        alert("Player Name:"+this.Team_Players[i]["playername"]+" Score:"+this.Team_Players[i]["score"]+" Balls Faced:"+this.Team_Players[i]["balls"]+" 6's:"+this.Team_Players[i]["6's"]+" 4's:"+this.Team_Players[i]["4's"]+" 1's:"+this.Team_Players[i]["1's"]);  
+    }
+}
+}
+var team1=new team();
+var team2=new team();
+function myFunction(id){
+    var team1_name=["Virat kholi(c)","Rohit Sharma","Sikhar dhawan","Manish pandiya","Shreyas iyer","MS dhoni(wk)","Rishabh Pant","Bumbra","Umesh Yadav","Bhuvaneshwar","Dinesh karthik"];
+    var team2_name=["David warner(c)","Steve smith","Aron Finch","M.hussey","Patt cummins","Albie Morkel","Nanthan Lyon","Adam zampa","Mitchel Starc","Santner","Khawaja"];
+    team1.assign(team1_name);
+    team2.assign(team2_name);
+    alert("players are ready in the field");
+}
+function myFunction1(id)
+{   
+    var id1=eval(id);
+    if((id1.balls>=1 && id1.balls<=30)&&(id1.players_count>=0&&id1.players_count<=10))
+    {
+        var rand=Math.floor(Math.random()*7)
+        console.log("score:",rand)
+        if(id1.balls%6==0)
+        {   
+            alert("over finished "+"score: "+id1.teamscore);
+        }
+        if(rand==0)
+        {   
+            if(id1.players_count<=9)
+            {
+            alert(id1.Team_Players[id1.players_count]["playername"]+" dismissed for "+id1.Team_Players[id1.players_count]["score"]+"runs"+"  Next Player "+id1.Team_Players[id1.players_count+1]["playername"]); 
+            }
+            else
+            {
+                alert(id1.Team_Players[id1.players_count]["playername"]+" dismissed for "+id1.Team_Players[id1.players_count]["score"]+"runs"+"     All Out");
+            } 
+            id1.Team_Players[id1.players_count]["score"]=id1.Team_Players[id1.players_count]["score"]+rand;
+            id1.Team_Players[id1.players_count]["balls"]=id1.Team_Players[id1.players_count]["balls"]+1;
+            id1.players_count++;
+            id1.balls+=1;
+            id1.teamscore=id1.teamscore+rand;   
+        }
+        else
+        {
+            id1.Team_Players[id1.players_count]["score"]=id1.Team_Players[id1.players_count]["score"]+rand;
+            id1.Team_Players[id1.players_count]["balls"]=id1.Team_Players[id1.players_count]["balls"]+1;
+            if(rand==4)
+            {
+                id1.Team_Players[id1.players_count]["4's"]=id1.Team_Players[id1.players_count]["4's"]+1;
+            }
+            else if(rand==6)
+            {
+                id1.Team_Players[id1.players_count]["6's"]=id1.Team_Players[id1.players_count]["6's"]+1;
+            }
+            else
+            {
+                id1.Team_Players[id1.players_count]["1's"]=id1.Team_Players[id1.players_count]["1's"]+rand;
+            }
+            id1.balls+=1;
+            id1.teamscore=id1.teamscore+rand;   
+            
+        }
+    }
+    else
+    {   
+        if(id1!=team2)
+        {   
+            alert("End of first innings");
+            id1.printTeam();
+            var b=document.getElementById("team1");
+            document.getElementById("team1").removeAttribute("id");
+            b.setAttribute("id","team2");
+
+            var b=document.getElementById("team1");
+            document.getElementById("team1").removeAttribute("id");
+            b.setAttribute("id","team2");
+
+            var b=document.getElementById("team1");
+            document.getElementById("team1").removeAttribute("id");
+            b.setAttribute("id","team2");
+        }
+        else{
+            alert("Match over");
+            team1.printTeam();
+            team2.printTeam();
+            alert("INDIA Score:"+team1.teamscore);
+            alert("AUSTRALIA Score:"+team2.teamscore);
+            if(team1.teamscore>team2.teamscore)
+            {
+                alert("Match won by INDIA");
+            }
+            else
+            {
+                alert("Match won by AUSTRALIA");
+            }
+        }
+    }
+}
+function myFunction2(id){
+    var id1=eval(id);
+    id1.printTeam();
+}
+        </script>
+        <style>
+.container {
+    background: #a52c644a;
+    height: 600px;
+    width: 1300px;
+    text-align: center;
+    margin-left: 110px;
+    margin-top: 30px;
+ }
+ #bat0
+ {
+margin-left: 200px;
+ }
+#overs
+{
+background-color: dimgray;
+margin-left: 480px;
+}
+#row1
+{
+background-color: crimson;
+height: 100px;
+}
+#row2
+{
+background-color: lightsalmon;
+height: 480px;
+margin-top: 10px;
+}
+#name1
+{
+background-color:indianred;
+margin-left: 50px;
+}
+#mark
+{
+margin-top: 30px;
+color: indigo;
+}
+#name2
+{
+background-color: indianred;
+margin-left: 280px;
+
+}
+#playernames1
+{
+background-color: paleturquoise;
+height: 380px;
+margin-top: 10px;
+margin-left: 50px;
+}
+#playernames2
+{
+background-color: paleturquoise;
+height: 380px;
+margin-top: 10px;
+margin-left: 280px;
+}
+#dvTable
+{   margin-top: 40px;
+
+width: 500px;
+
+}
+#dvTable1
+{   margin-top: 40px;
+
+width: 500px;
+
+}
+.b1
+{
+background-color: darkred;   
+margin-bottom: 500px;
+margin-left: 40px;
+}
+.b2
+{
+background-color: darkgrey;
+height: 40px;
+margin-top: 40px;
+margin-left: 400px;
+}
+.b3
+{   margin-top: 40px;
+background-color: darkgrey;
+height: 40px;
+margin-left: 10px;
+}
+        </style>
+        <!-- Compiled and Minified Bootstrap CSS -->
+        <link rel = "stylesheet" 
+            href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity = "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+            crossorigin = "anonymous">
+        
+        <link rel="stylesheet" type="text/css" href="cricket.css">
+    </head>
+    <body id="body" onload="invoke()">
+    </body>
+</html>
